@@ -34,7 +34,7 @@ class QueryRequest(BaseModel):
 
 def build_qa_chain():
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
-    vectorstore = PineconeVectorStore(index=index, embedding=embeddings, text_key="text")
+    vectorstore = PineconeVectorStore(index=index, embedding=embeddings, text_key="title")
     retriever = vectorstore.as_retriever(search_kwargs={"k": 15})
     llm = ChatOpenAI(model_name="gpt-4", temperature=0)
     return RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
@@ -54,3 +54,8 @@ async def query_rag(request: QueryRequest):
     except Exception as e:
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/")
+def root():
+    return {"message": "RAG with Pinecone is running. Use /docs to try it out."}
+
