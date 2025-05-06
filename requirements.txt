@@ -1,6 +1,6 @@
-langchain
-langchain-community
-openai
 fastapi
 uvicorn
-pinecone-client
+openai
+langchain
+langchain-community
+pinecone
