@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rag-pinecone-api
+    runtime: python
+    region: frankfurt
+    plan: starter  # or "free" during testing, "starter" recommended for GPT/Pinecone
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: PINECONE_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: PINECONE_INDEX_NAME
+        value: text-embedding-ada-002
