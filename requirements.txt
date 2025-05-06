@@ -1,6 +1,6 @@
+langchain
+langchain-community
+openai
 fastapi
 uvicorn
-python-dotenv
-langchain
-openai
 pinecone-client
