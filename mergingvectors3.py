@@ -11,7 +11,7 @@ from langchain.schema import Document
 from langchain.chains import RetrievalQA
 from langchain.storage import InMemoryStore
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "OPENAI_API_KEY"
 logging.basicConfig(level=logging.INFO)
 
 import pickle
